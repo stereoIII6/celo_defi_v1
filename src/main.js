@@ -1,4 +1,4 @@
-import Web3 from "web3";
+import { ethers } from "ethers";
 import { newKitFromWeb3 } from "@celo/contractkit";
 import BigNumber from "bignumber.js";
 import marketplaceAbi from "../contract/marketplace.abi.json";
@@ -20,7 +20,7 @@ const connectCeloWallet = async function () {
       notification("⚠️ Please approve this DApp to use it.");
       await window.celo.enable();
       notificationOff();
-      const web3 = new Web3(window.celo);
+      const web3 = new ethers(window.celo);
       kit = newKitFromWeb3(web3);
 
       const accounts = await kit.web3.eth.getAccounts();
